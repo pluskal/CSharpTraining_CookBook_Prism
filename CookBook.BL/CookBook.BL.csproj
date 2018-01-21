@@ -47,10 +47,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\IngredientDetailModel.cs" />
-    <Compile Include="Models\IngredientModel.cs" />
-    <Compile Include="Models\RecipeDetailModel.cs" />
-    <Compile Include="Models\RecipeListModel.cs" />
+    <Compile Include="Models\IngredientDetailDTO.cs" />
+    <Compile Include="Models\IngredientDto.cs" />
+    <Compile Include="Models\RecipeDetailDto.cs" />
+    <Compile Include="Models\RecipeListDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RecipeMapper.cs" />
     <Compile Include="RecipeRepository.cs" />

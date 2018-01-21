@@ -5,16 +5,16 @@ using CookBook.Common;
 
 namespace CookBook.BL.Models
 {
-    public class RecipeDetailModel
+    public class RecipeDetailDto
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
         public FoodType Type { get; set; }
         public string Description { get; set; }
         public TimeSpan Duration { get; set; }
-        public ICollection<IngredientModel> Ingredients { get; set; } = new List<IngredientModel>();
+        public ICollection<IngredientDto> Ingredients { get; set; } = new List<IngredientDto>();
 
-        protected bool Equals(RecipeDetailModel other)
+        protected bool Equals(RecipeDetailDto other)
         {
             var members = this.Id.Equals(other.Id) && string.Equals(this.Name, other.Name) && this.Type == other.Type &&
                           string.Equals(this.Description, other.Description) && this.Duration.Equals(other.Duration);
@@ -28,7 +28,7 @@ namespace CookBook.BL.Models
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return this.Equals((RecipeDetailModel) obj);
+            return this.Equals((RecipeDetailDto) obj);
         }
 
         public override int GetHashCode()

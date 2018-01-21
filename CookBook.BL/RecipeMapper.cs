@@ -7,9 +7,9 @@ namespace CookBook.BL
 {
     public class RecipeMapper
     {
-        public RecipeListModel Map(RecipeEntity recipeEntity)
+        public RecipeListDto Map(RecipeEntity recipeEntity)
         {
-            return new RecipeListModel
+            return new RecipeListDto
             {
                 Id = recipeEntity.Id,
                 Name = recipeEntity.Name,
@@ -18,16 +18,16 @@ namespace CookBook.BL
             };
         }
 
-        public RecipeDetailModel MapDetailModel(RecipeEntity recipeEntity)
+        public RecipeDetailDto MapDetailModel(RecipeEntity recipeEntity)
         {
-            return new RecipeDetailModel
+            return new RecipeDetailDto
             {
                 Id = recipeEntity.Id,
                 Name = recipeEntity.Name,
                 Description = recipeEntity.Description,
                 Type = recipeEntity.Type,
                 Duration = recipeEntity.Duration,
-                Ingredients = recipeEntity.Ingredients.Select(ia => new IngredientModel
+                Ingredients = recipeEntity.Ingredients.Select(ia => new IngredientDto
                 {
                     Id = ia.Id,
                     Name = ia.Ingredient.Name,
@@ -38,22 +38,22 @@ namespace CookBook.BL
             };
         }
 
-        internal RecipeEntity Map(RecipeDetailModel recipeDetailModel)
+        internal RecipeEntity Map(RecipeDetailDto recipeDetailDto)
         {
             var recipeEntity = new RecipeEntity
             {
-                Name = recipeDetailModel.Name,
-                Description = recipeDetailModel.Description,
-                Type =  recipeDetailModel.Type,
-                Duration = recipeDetailModel.Duration
+                Name = recipeDetailDto.Name,
+                Description = recipeDetailDto.Description,
+                Type =  recipeDetailDto.Type,
+                Duration = recipeDetailDto.Duration
             };
 
-            if (recipeDetailModel.Id == Guid.Empty)
-                recipeDetailModel.Id = recipeEntity.Id;
+            if (recipeDetailDto.Id == Guid.Empty)
+                recipeDetailDto.Id = recipeEntity.Id;
             else
-                recipeEntity.Id = recipeDetailModel.Id;
+                recipeEntity.Id = recipeDetailDto.Id;
 
-            foreach (var ingredientModel in recipeDetailModel.Ingredients)
+            foreach (var ingredientModel in recipeDetailDto.Ingredients)
             {
                 var ingredientAmount = new IngredientAmountEntity
                 {
@@ -78,9 +78,9 @@ namespace CookBook.BL
         }
 
 
-        public IngredientDetailModel Map(IngredientEntity recipeEntity)
+        public IngredientDetailDto Map(IngredientEntity recipeEntity)
         {
-            return new IngredientDetailModel
+            return new IngredientDetailDto
             {
                 Id = recipeEntity.Id,
                 Name = recipeEntity.Name,
@@ -88,18 +88,18 @@ namespace CookBook.BL
             };
         }
 
-        public IngredientEntity Map(IngredientDetailModel recipeDetailModel)
+        public IngredientEntity Map(IngredientDetailDto recipeDetailDto)
         {
             var ingredientEntity = new IngredientEntity
             {
-                Name = recipeDetailModel.Name,
-                Description = recipeDetailModel.Description
+                Name = recipeDetailDto.Name,
+                Description = recipeDetailDto.Description
             };
 
-            if (recipeDetailModel.Id == Guid.Empty)
-                ingredientEntity.Id = recipeDetailModel.Id;
+            if (recipeDetailDto.Id == Guid.Empty)
+                ingredientEntity.Id = recipeDetailDto.Id;
             else
-                recipeDetailModel.Id = ingredientEntity.Id;
+                recipeDetailDto.Id = ingredientEntity.Id;
             return ingredientEntity;
         }
     }

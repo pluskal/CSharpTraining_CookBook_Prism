@@ -3,7 +3,7 @@ using CookBook.Common;
 
 namespace CookBook.BL.Models
 {
-    public class RecipeListModel
+    public class RecipeListDto
     {
         public Guid Id { get; set; }
         public string Name { get; set; }

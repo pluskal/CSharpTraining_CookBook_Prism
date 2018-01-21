@@ -15,7 +15,7 @@ namespace CookBook.BL
             this._mapper = mapper;
         }
 
-        public RecipeListModel[] GetAll()
+        public RecipeListDto[] GetAll()
         {
             using (var dbx = new CookBookDbContext())
             {
@@ -23,7 +23,7 @@ namespace CookBook.BL
             }
         }
 
-        public RecipeDetailModel GetById(Guid id)
+        public RecipeDetailDto GetById(Guid id)
         {
             using (var dbx = new CookBookDbContext())
             {
@@ -34,11 +34,11 @@ namespace CookBook.BL
             }
         }
 
-        public void InsertRecipe(RecipeDetailModel recipeDetailModel)
+        public void InsertRecipe(RecipeDetailDto recipeDetailDto)
         {
             using (var dbx = new CookBookDbContext())
             {
-                dbx.Recipes.Add(this._mapper.Map(recipeDetailModel));
+                dbx.Recipes.Add(this._mapper.Map(recipeDetailDto));
                 dbx.SaveChanges();
             }
         }
@@ -51,7 +51,7 @@ namespace CookBook.BL
             }
         }
 
-        public IngredientDetailModel[] GetAllIngredients()
+        public IngredientDetailDto[] GetAllIngredients()
         {
             using (var dbx = new CookBookDbContext())
             {
@@ -59,7 +59,7 @@ namespace CookBook.BL
             }
         }
 
-        public void InsertOrUpdateRecipe(RecipeDetailModel detail)
+        public void InsertOrUpdateRecipe(RecipeDetailDto detail)
         {
             using (var dbx = new CookBookDbContext())
             {

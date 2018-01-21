@@ -25,7 +25,7 @@ namespace CookBook.BL.Tests
             this._recipeRepository.ClearDatabase();
         }
 
-        private void GetAssertRecipeDetailModel(RecipeDetailModel recipe)
+        private void GetAssertRecipeDetailModel(RecipeDetailDto recipe)
         {
             var detailModel = this._recipeRepository.GetById(recipe.Id);
 
@@ -33,7 +33,7 @@ namespace CookBook.BL.Tests
             Assert.AreEqual(detailModel, recipe);
         }
 
-        private static void AssertIngredient(RecipeDetailModel recipe, IngredientDetailModel[] ingredients)
+        private static void AssertIngredient(RecipeDetailDto recipe, IngredientDetailDto[] ingredients)
         {
             foreach (var ingredient in recipe.Ingredients)
             {
@@ -43,24 +43,24 @@ namespace CookBook.BL.Tests
             }
         }
 
-        private RecipeDetailModel CreateRecipeDetailModel()
+        private RecipeDetailDto CreateRecipeDetail()
         {
-            var recipe = new RecipeDetailModel
+            var recipe = new RecipeDetailDto
             {
                 Name = "RecipeName",
                 Description = "RecipeDescription",
                 Duration = new TimeSpan(0, 0, 1),
                 Type = FoodType.MainCourse,
-                Ingredients = new List<IngredientModel>
+                Ingredients = new List<IngredientDto>
                 {
-                    new IngredientModel
+                    new IngredientDto
                     {
                         Name = "Ingredient1Name",
                         Description = "Ingredient1Description",
                         Unit = Unit.Kg,
                         Amount = 3.14
                     },
-                    new IngredientModel
+                    new IngredientDto
                     {
                         Name = "Ingredient2Name",
                         Description = "Ingredient2Description",
@@ -82,7 +82,7 @@ namespace CookBook.BL.Tests
         [Test]
         public void InsertNewRecipe_GetAllIngredients_IngredientsPresent()
         {
-            var recipe = this.CreateRecipeDetailModel();
+            var recipe = this.CreateRecipeDetail();
             this._recipeRepository.InsertRecipe(recipe);
             var allIngredients = this._recipeRepository.GetAllIngredients();
             AssertIngredient(recipe, allIngredients);
@@ -91,7 +91,7 @@ namespace CookBook.BL.Tests
         [Test]
         public void NewRecipe_InsertRecipe_RecipeInserted()
         {
-            var recipe = this.CreateRecipeDetailModel();
+            var recipe = this.CreateRecipeDetail();
             this._recipeRepository.InsertRecipe(recipe);
 
             this.GetAssertRecipeDetailModel(recipe);
@@ -100,9 +100,9 @@ namespace CookBook.BL.Tests
         [Test]
         public void TwoNewRecipes_InsertRecipe_RecipesInserted()
         {
-            var recipe1 = this.CreateRecipeDetailModel();
+            var recipe1 = this.CreateRecipeDetail();
             this._recipeRepository.InsertRecipe(recipe1);
-            var recipe2 = this.CreateRecipeDetailModel();
+            var recipe2 = this.CreateRecipeDetail();
             this._recipeRepository.InsertRecipe(recipe2);
 
             this.GetAssertRecipeDetailModel(recipe1);

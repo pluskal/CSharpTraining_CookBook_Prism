@@ -2,13 +2,13 @@
 
 namespace CookBook.BL.Models
 {
-    public class IngredientDetailModel
+    public class IngredientDetailDto
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
 
-        protected bool Equals(IngredientDetailModel other)
+        protected bool Equals(IngredientDetailDto other)
         {
             return this.Id.Equals(other.Id) && string.Equals(this.Name, other.Name) &&
                    string.Equals(this.Description, other.Description);
@@ -19,7 +19,7 @@ namespace CookBook.BL.Models
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return this.Equals((IngredientDetailModel) obj);
+            return this.Equals((IngredientDetailDto) obj);
         }
 
         public override int GetHashCode()
