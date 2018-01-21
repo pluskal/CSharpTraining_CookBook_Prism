@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using CookBook.Common;
 
 namespace CookBook.BL.Models
 {

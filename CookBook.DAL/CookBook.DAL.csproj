@@ -51,15 +51,19 @@
     <Compile Include="CookBookDbInitializer.cs" />
     <Compile Include="DbContextExtensions.cs" />
     <Compile Include="Entities\EntityBase.cs" />
-    <Compile Include="Entities\FoodType.cs" />
     <Compile Include="Entities\IngredientAmountEntity.cs" />
     <Compile Include="Entities\IngredientEntity.cs" />
     <Compile Include="Entities\RecipeEntity.cs" />
-    <Compile Include="Entities\Unit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CookBook.Common\CookBook.Common.csproj">
+      <Project>{29EAC770-62C8-4A85-80BE-209060318480}</Project>
+      <Name>CookBook.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

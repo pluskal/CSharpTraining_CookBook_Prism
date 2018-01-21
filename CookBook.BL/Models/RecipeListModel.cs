@@ -1,4 +1,5 @@
 ﻿using System;
+using CookBook.Common;
 
 namespace CookBook.BL.Models
 {

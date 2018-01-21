@@ -1,4 +1,6 @@
-﻿namespace CookBook.DAL.Entities
+﻿using CookBook.Common;
+
+namespace CookBook.DAL.Entities
 {
     public class IngredientAmountEntity : EntityBase
     {

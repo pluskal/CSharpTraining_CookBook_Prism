@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using CookBook.BL.Models;
+using CookBook.Common;
 using NUnit.Framework;
 
 namespace CookBook.BL.Tests

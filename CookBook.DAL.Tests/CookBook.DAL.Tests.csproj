@@ -81,6 +81,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CookBook.Common\CookBook.Common.csproj">
+      <Project>{29eac770-62c8-4a85-80be-209060318480}</Project>
+      <Name>CookBook.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CookBook.DAL\CookBook.DAL.csproj">
       <Project>{90352daa-5367-46ec-9be3-7dde681919a9}</Project>
       <Name>CookBook.DAL</Name>

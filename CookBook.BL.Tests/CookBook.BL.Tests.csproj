@@ -100,6 +100,10 @@
       <Project>{cf85f3eb-2984-4afe-bd5e-9e84e695b62c}</Project>
       <Name>CookBook.BL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CookBook.Common\CookBook.Common.csproj">
+      <Project>{29EAC770-62C8-4A85-80BE-209060318480}</Project>
+      <Name>CookBook.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

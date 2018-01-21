@@ -2,8 +2,6 @@
 using System.Linq;
 using CookBook.BL.Models;
 using CookBook.DAL.Entities;
-using FoodType = CookBook.BL.Models.FoodType;
-using Unit = CookBook.BL.Models.Unit;
 
 namespace CookBook.BL
 {
@@ -15,7 +13,7 @@ namespace CookBook.BL
             {
                 Id = recipeEntity.Id,
                 Name = recipeEntity.Name,
-                Type = (FoodType) recipeEntity.Type,
+                Type = recipeEntity.Type,
                 Duration = recipeEntity.Duration
             };
         }
@@ -27,7 +25,7 @@ namespace CookBook.BL
                 Id = recipeEntity.Id,
                 Name = recipeEntity.Name,
                 Description = recipeEntity.Description,
-                Type = (FoodType) recipeEntity.Type,
+                Type = recipeEntity.Type,
                 Duration = recipeEntity.Duration,
                 Ingredients = recipeEntity.Ingredients.Select(ia => new IngredienceModel
                 {
@@ -35,7 +33,7 @@ namespace CookBook.BL
                     Name = ia.Ingredient.Name,
                     Description = ia.Ingredient.Description,
                     Amount = ia.Amount,
-                    Unit = (Unit) ia.Unit
+                    Unit = ia.Unit
                 }).ToList()
             };
         }
@@ -46,7 +44,7 @@ namespace CookBook.BL
             {
                 Name = recipeDetailModel.Name,
                 Description = recipeDetailModel.Description,
-                Type = (DAL.Entities.FoodType) recipeDetailModel.Type,
+                Type =  recipeDetailModel.Type,
                 Duration = recipeDetailModel.Duration
             };
 
@@ -60,7 +58,7 @@ namespace CookBook.BL
                 var ingredientAmount = new IngredientAmountEntity
                 {
                     Amount = ingredientModel.Amount,
-                    Unit = (DAL.Entities.Unit) ingredientModel.Unit
+                    Unit =  ingredientModel.Unit
                 };
 
                 var ingredient = new IngredientEntity
