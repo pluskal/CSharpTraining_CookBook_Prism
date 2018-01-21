@@ -12,7 +12,7 @@ namespace CookBook.BL.Models
         public FoodType Type { get; set; }
         public string Description { get; set; }
         public TimeSpan Duration { get; set; }
-        public ICollection<IngredientDto> Ingredients { get; set; } = new List<IngredientDto>();
+        public ICollection<IngredientDetailDto> Ingredients { get; set; } = new List<IngredientDetailDto>();
 
         protected bool Equals(RecipeDetailDto other)
         {
