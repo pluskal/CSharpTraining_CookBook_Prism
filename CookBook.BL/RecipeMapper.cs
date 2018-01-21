@@ -27,7 +27,7 @@ namespace CookBook.BL
                 Description = recipeEntity.Description,
                 Type = recipeEntity.Type,
                 Duration = recipeEntity.Duration,
-                Ingredients = recipeEntity.Ingredients.Select(ia => new IngredienceModel
+                Ingredients = recipeEntity.Ingredients.Select(ia => new IngredientModel
                 {
                     Id = ia.Id,
                     Name = ia.Ingredient.Name,
@@ -78,9 +78,9 @@ namespace CookBook.BL
         }
 
 
-        public IngredienceDetailModel Map(IngredientEntity recipeEntity)
+        public IngredientDetailModel Map(IngredientEntity recipeEntity)
         {
-            return new IngredienceDetailModel
+            return new IngredientDetailModel
             {
                 Id = recipeEntity.Id,
                 Name = recipeEntity.Name,
@@ -88,7 +88,7 @@ namespace CookBook.BL
             };
         }
 
-        public IngredientEntity Map(IngredienceDetailModel recipeDetailModel)
+        public IngredientEntity Map(IngredientDetailModel recipeDetailModel)
         {
             var ingredientEntity = new IngredientEntity
             {

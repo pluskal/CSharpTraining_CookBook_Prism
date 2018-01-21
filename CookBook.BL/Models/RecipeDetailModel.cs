@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using CookBook.Common;
 
 namespace CookBook.BL.Models
@@ -11,7 +12,7 @@ namespace CookBook.BL.Models
         public FoodType Type { get; set; }
         public string Description { get; set; }
         public TimeSpan Duration { get; set; }
-        public ICollection<IngredienceModel> Ingredients { get; set; } = new List<IngredienceModel>();
+        public ICollection<IngredientModel> Ingredients { get; set; } = new List<IngredientModel>();
 
         protected bool Equals(RecipeDetailModel other)
         {
@@ -19,9 +20,7 @@ namespace CookBook.BL.Models
                           string.Equals(this.Description, other.Description) && this.Duration.Equals(other.Duration);
             if (!members) return false;
             if (this.Ingredients.Count != other.Ingredients.Count) return false;
-            foreach (var ingredientModel in this.Ingredients)
-                if (!other.Ingredients.Contains(ingredientModel)) return false;
-            return true;
+            return this.Ingredients.All(ingredientModel => other.Ingredients.Contains(ingredientModel));
         }
 
         public override bool Equals(object obj)

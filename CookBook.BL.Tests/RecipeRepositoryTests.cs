@@ -33,7 +33,7 @@ namespace CookBook.BL.Tests
             Assert.AreEqual(detailModel, recipe);
         }
 
-        private static void AssertIngredient(RecipeDetailModel recipe, IngredienceDetailModel[] ingredients)
+        private static void AssertIngredient(RecipeDetailModel recipe, IngredientDetailModel[] ingredients)
         {
             foreach (var ingredient in recipe.Ingredients)
             {
@@ -51,16 +51,16 @@ namespace CookBook.BL.Tests
                 Description = "RecipeDescription",
                 Duration = new TimeSpan(0, 0, 1),
                 Type = FoodType.MainCourse,
-                Ingredients = new List<IngredienceModel>
+                Ingredients = new List<IngredientModel>
                 {
-                    new IngredienceModel
+                    new IngredientModel
                     {
                         Name = "Ingredient1Name",
                         Description = "Ingredient1Description",
                         Unit = Unit.Kg,
                         Amount = 3.14
                     },
-                    new IngredienceModel
+                    new IngredientModel
                     {
                         Name = "Ingredient2Name",
                         Description = "Ingredient2Description",

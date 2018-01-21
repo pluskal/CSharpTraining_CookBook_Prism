@@ -3,7 +3,7 @@ using CookBook.Common;
 
 namespace CookBook.BL.Models
 {
-    public class IngredienceModel
+    public class IngredientModel
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
@@ -11,7 +11,7 @@ namespace CookBook.BL.Models
         public double Amount { get; set; }
         public Unit Unit { get; set; }
 
-        protected bool Equals(IngredienceModel other)
+        protected bool Equals(IngredientModel other)
         {
             return string.Equals(this.Name, other.Name) && string.Equals(this.Description, other.Description) &&
                    this.Amount.Equals(other.Amount) && this.Unit == other.Unit;
@@ -22,7 +22,7 @@ namespace CookBook.BL.Models
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return this.Equals((IngredienceModel) obj);
+            return this.Equals((IngredientModel) obj);
         }
 
         public override int GetHashCode()

@@ -51,7 +51,7 @@ namespace CookBook.BL
             }
         }
 
-        public IngredienceDetailModel[] GetAllIngredients()
+        public IngredientDetailModel[] GetAllIngredients()
         {
             using (var dbx = new CookBookDbContext())
             {
