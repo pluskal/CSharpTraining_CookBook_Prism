@@ -21,6 +21,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookBook.Common", "CookBook
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookBook.App", "CookBook.App\CookBook.App.csproj", "{309C1B8A-5FF1-4EAF-B2D5-F3A56352CE24}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libs", "Libs", "{45291CB7-962E-4F29-9C15-48FCCB7D4CCD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrismContrib.WindsorExtensions.Desktop", "Libs\PrismContrib.WindsorExtensions\src\Desktop\PrismContrib.WindsorExtensions\PrismContrib.WindsorExtensions.Desktop.csproj", "{8490412A-734F-4ED4-A430-A2730AB08849}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrismContrib.WindsorExtensions.Desktop.Tests", "Libs\PrismContrib.WindsorExtensions\src\Desktop\PrismContrib.WindsorExtensions.Tests\PrismContrib.WindsorExtensions.Desktop.Tests.csproj", "{F12FC1BC-6FB6-4395-961A-E72BCC5FAB7A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookBook.App.Infrastructure", "CookBook.App.Infrastructure\CookBook.App.Infrastructure.csproj", "{0E5AC709-A8C8-44CF-B78F-4D3577004523}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,9 +59,25 @@ Global
 		{309C1B8A-5FF1-4EAF-B2D5-F3A56352CE24}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{309C1B8A-5FF1-4EAF-B2D5-F3A56352CE24}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{309C1B8A-5FF1-4EAF-B2D5-F3A56352CE24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8490412A-734F-4ED4-A430-A2730AB08849}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8490412A-734F-4ED4-A430-A2730AB08849}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8490412A-734F-4ED4-A430-A2730AB08849}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8490412A-734F-4ED4-A430-A2730AB08849}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F12FC1BC-6FB6-4395-961A-E72BCC5FAB7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F12FC1BC-6FB6-4395-961A-E72BCC5FAB7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F12FC1BC-6FB6-4395-961A-E72BCC5FAB7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F12FC1BC-6FB6-4395-961A-E72BCC5FAB7A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E5AC709-A8C8-44CF-B78F-4D3577004523}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E5AC709-A8C8-44CF-B78F-4D3577004523}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E5AC709-A8C8-44CF-B78F-4D3577004523}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E5AC709-A8C8-44CF-B78F-4D3577004523}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8490412A-734F-4ED4-A430-A2730AB08849} = {45291CB7-962E-4F29-9C15-48FCCB7D4CCD}
+		{F12FC1BC-6FB6-4395-961A-E72BCC5FAB7A} = {45291CB7-962E-4F29-9C15-48FCCB7D4CCD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DF9AB8DF-3DEF-4400-B933-91490912C77D}

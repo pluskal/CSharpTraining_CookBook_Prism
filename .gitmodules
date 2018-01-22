@@ -1,0 +1,3 @@
+[submodule "Libs/PrismContrib.WindsorExtensions"]
+	path = Libs/PrismContrib.WindsorExtensions
+	url = https://github.com/pluskal/PrismContrib.WindsorExtensions.git
