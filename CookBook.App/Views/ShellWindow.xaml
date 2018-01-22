@@ -1,0 +1,29 @@
+﻿<Window x:Class="CookBook.App.Views.ShellWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CookBook.App.Views"
+        xmlns:regions="http://prismlibrary.com/"
+        xmlns:infrastructure="clr-namespace:CookBook.App.Infrastructure.Bases;assembly=CookBook.App.Infrastructure"
+        mc:Ignorable="d"
+        Title="ShellWindow" Height="300" Width="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Border x:Name="HeaderRegion" Margin="5 5 5 0" BorderBrush="Black" BorderThickness="1" CornerRadius="0,0,5,5">
+            <ContentControl x:Name="HeaderContent"
+                            regions:RegionManager.RegionName="{x:Static infrastructure:RegionNames.HeaderRegion}" />
+        </Border>
+        <Border x:Name="BodyBoarder" Grid.Row="1" Margin="5" BorderBrush="Black" BorderThickness="1" CornerRadius="0,0,5,5">
+            <TabControl x:Name="BodyContent" SelectedIndex="0"
+                        regions:RegionManager.RegionName="{x:Static infrastructure:RegionNames.BodyRegion}" />
+        </Border>
+
+        <ContentControl x:Name="ModalContent" Grid.Row="0" Grid.RowSpan="2" Background="#00000000" d:IsHidden="True"
+                        regions:RegionManager.RegionName="{x:Static infrastructure:RegionNames.ModalRegion}" />
+
+    </Grid>
+</Window>
