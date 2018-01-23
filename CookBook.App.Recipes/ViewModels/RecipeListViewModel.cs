@@ -18,6 +18,7 @@ namespace CookBook.App.Recipes.ViewModels
     public class RecipeListViewModel : BindableBase
     {
         private ObservableCollection<RecipeListDto> _recipes;
+        private bool _isLoading = true;
 
         public RecipeListViewModel(ICookBookRepository cookBookRepository, IEventAggregator eventAggregator)
         {
@@ -44,8 +45,10 @@ namespace CookBook.App.Recipes.ViewModels
         {
             await Task.Run(async () =>
             {
+                this.IsLoading = true;
                 await Task.Delay(1000); //TODO Remove, Simulates DB delay
                 this.Recipes = new ObservableCollection<RecipeListDto>(this.CookBookRepository.GetAllRecipes());
+                this.IsLoading = false;
             });
         }
 
@@ -59,6 +62,12 @@ namespace CookBook.App.Recipes.ViewModels
         private IEventAggregator EventAggregator { get; }
 
         public ICommand SelectRecipeCommand => new DelegateCommand<RecipeListDto>(SelectRecipe);
+
+        public bool IsLoading
+        {
+            get => this._isLoading;
+            set => this.SetProperty(ref this._isLoading, value);
+        }
 
         private void SelectRecipe(RecipeListDto recipeListModel)
         {

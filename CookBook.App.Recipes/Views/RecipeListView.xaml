@@ -13,40 +13,45 @@
              d:DesignHeight="300" d:DesignWidth="300"
              d:DataContext="{d:DesignInstance viewModels:RecipeListViewModel}"
              xmlns:prism="http://prismlibrary.com/"
+             xmlns:views="clr-namespace:CookBook.App.Infrastructure.Views;assembly=CookBook.App.Infrastructure"
              prism:ViewModelLocator.AutoWireViewModel="True"
              >
     <UserControl.Resources>
         <converters:DurationToMinuteConverter x:Key="DurationToMinuteConverter" />
+        <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
     </UserControl.Resources>
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <Label Grid.Row="0">TEST</Label>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
             <ListBox x:Name="RecipesListBox" Grid.Row="1" ItemsSource="{Binding Recipes}">
-            <i:Interaction.Triggers>
-                <i:EventTrigger EventName="SelectionChanged">
-                    <interactivity:InvokeCommandAction Command="{Binding Mode=OneWay, Path=SelectRecipeCommand}" CommandParameter="{Binding ElementName=RecipesListBox, Path=SelectedItem}" />
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding Name}" />
-                        <TextBlock>
-                            Duration: 
-                            <Run 
-                                FontWeight="Bold" 
-                                Text="{
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectionChanged">
+                        <interactivity:InvokeCommandAction Command="{Binding Mode=OneWay, Path=SelectRecipeCommand}" CommandParameter="{Binding ElementName=RecipesListBox, Path=SelectedItem}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Name}" />
+                            <TextBlock>
+                                Duration: 
+                                <Run 
+                                    FontWeight="Bold" 
+                                    Text="{
                                 Binding Duration, 
                                 Converter={StaticResource DurationToMinuteConverter}, 
                                 StringFormat= {}{0:F2}
                                 }" /> minut.
-                        </TextBlock>
-                    </StackPanel>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ListBox>
+                            </TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ListBox>
+        </Grid>
+        <views:LoadingView Visibility="{Binding IsLoading, Converter={StaticResource BoolToVisibilityConverter}}" />
     </Grid>
+    
 </UserControl>
