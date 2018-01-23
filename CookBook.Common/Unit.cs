@@ -1,4 +1,4 @@
-﻿namespace CookBook.BL.Models
+﻿namespace CookBook.Common
 {
     public enum Unit
     {

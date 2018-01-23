@@ -1,26 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using CookBook.Common;
 
 namespace CookBook.BL.Models
 {
-    public class RecipeDetailModel
+    public class RecipeDetailDto
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
         public FoodType Type { get; set; }
         public string Description { get; set; }
         public TimeSpan Duration { get; set; }
-        public ICollection<IngredienceModel> Ingredients { get; set; } = new List<IngredienceModel>();
+        public ICollection<IngredientDetailDto> Ingredients { get; set; } = new List<IngredientDetailDto>();
 
-        protected bool Equals(RecipeDetailModel other)
+        protected bool Equals(RecipeDetailDto other)
         {
             var members = this.Id.Equals(other.Id) && string.Equals(this.Name, other.Name) && this.Type == other.Type &&
                           string.Equals(this.Description, other.Description) && this.Duration.Equals(other.Duration);
             if (!members) return false;
             if (this.Ingredients.Count != other.Ingredients.Count) return false;
-            foreach (var ingredientModel in this.Ingredients)
-                if (!other.Ingredients.Contains(ingredientModel)) return false;
-            return true;
+            return this.Ingredients.All(ingredientModel => other.Ingredients.Contains(ingredientModel));
         }
 
         public override bool Equals(object obj)
@@ -28,7 +28,7 @@ namespace CookBook.BL.Models
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return this.Equals((RecipeDetailModel) obj);
+            return this.Equals((RecipeDetailDto) obj);
         }
 
         public override int GetHashCode()
