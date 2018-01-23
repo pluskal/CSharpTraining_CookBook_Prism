@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using System.Reflection;
+using AutoMapper;
 using Castle.Facilities.Logging;
 using Castle.Facilities.TypedFactory;
 using Castle.MicroKernel.Registration;
@@ -7,10 +8,12 @@ using Castle.Services.Logging.Log4netIntegration;
 using Castle.Windsor;
 using CookBook.App.Infrastructure.Interfaces;
 using CookBook.App.Views;
+using CookBook.BL;
+using CookBook.Common.Interfaces;
 using Prism.Modularity;
 using IConfigurationStore = Castle.MicroKernel.SubSystems.Configuration.IConfigurationStore;
 
-namespace CookBook.App
+namespace CookBook.App.Infrastructure
 {
     public class IocInstaller : IWindsorInstaller
     {
@@ -41,6 +44,17 @@ namespace CookBook.App
                 Classes.FromAssemblyInDirectory(currentDirectoryAssemblyFilter)
                     .Where(p => p.Name.EndsWith("View"))
                     .LifestyleTransient());
+
+            container.Register(Component.For<ICookBookRepository, CookBookRepository>());
+
+            container.Register(Component.For<IMapper>().UsingFactoryMethod(x =>
+            {
+                return new MapperConfiguration(c =>
+                {
+                    c.AddProfile<CookBookMappingProfile>();
+                }).CreateMapper();
+            }));
+            
         }
         
     }

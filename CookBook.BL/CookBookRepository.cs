@@ -3,13 +3,14 @@ using System.Data.Entity;
 using System.Linq;
 using AutoMapper;
 using AutoMapper.Configuration;
-using CookBook.BL.Models;
+using CookBook.Common.Interfaces;
+using CookBook.Common.Models;
 using CookBook.DAL;
 using CookBook.DAL.Entities;
 
 namespace CookBook.BL
 {
-    public class CookBookRepository
+    public class CookBookRepository : ICookBookRepository
     {
         private readonly IMapper _mapper;
 

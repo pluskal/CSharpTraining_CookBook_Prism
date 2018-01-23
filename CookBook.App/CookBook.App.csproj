@@ -34,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.2.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.2.2\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <HintPath>..\packages\Castle.Core.4.2.1\lib\net45\Castle.Core.dll</HintPath>
     </Reference>
@@ -45,6 +48,12 @@
     </Reference>
     <Reference Include="Castle.Windsor, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <HintPath>..\packages\Castle.Windsor.4.1.0\lib\net45\Castle.Windsor.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
@@ -59,9 +68,11 @@
       <HintPath>..\packages\Prism.Wpf.6.3.0\lib\net45\Prism.Wpf.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Runtime.Remoting" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Prism.Wpf.6.3.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
@@ -85,7 +96,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Bootstrapper.cs" />
-    <Compile Include="IocInstaller.cs" />
+    <Compile Include="Infrastructure\IocInstaller.cs" />
     <Compile Include="Views\ShellWindow.xaml.cs">
       <DependentUpon>ShellWindow.xaml</DependentUpon>
     </Compile>
@@ -137,6 +148,18 @@
     <ProjectReference Include="..\CookBook.App.Infrastructure\CookBook.App.Infrastructure.csproj">
       <Project>{0e5ac709-a8c8-44cf-b78f-4d3577004523}</Project>
       <Name>CookBook.App.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CookBook.App.Recipes\CookBook.App.Recipes.csproj">
+      <Project>{2c3d2c39-e497-45e0-9057-2863fb7b55b1}</Project>
+      <Name>CookBook.App.Recipes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CookBook.BL\CookBook.BL.csproj">
+      <Project>{CF85F3EB-2984-4AFE-BD5E-9E84E695B62C}</Project>
+      <Name>CookBook.BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CookBook.Common\CookBook.Common.csproj">
+      <Project>{29EAC770-62C8-4A85-80BE-209060318480}</Project>
+      <Name>CookBook.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\Libs\PrismContrib.WindsorExtensions\src\Desktop\PrismContrib.WindsorExtensions\PrismContrib.WindsorExtensions.Desktop.csproj">
       <Project>{8490412a-734f-4ed4-a430-a2730ab08849}</Project>

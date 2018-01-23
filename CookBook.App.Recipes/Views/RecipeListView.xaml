@@ -1,0 +1,52 @@
+﻿<UserControl x:Class="CookBook.App.Recipes.Views.RecipeListView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CookBook.App.Recipes.Views"
+             xmlns:viewModels="clr-namespace:CookBook.App.Recipes.ViewModels"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:interactivity="http://prismlibrary.com/"
+             xmlns:recipes="clr-namespace:CookBook.App.Recipes"
+             xmlns:converters="clr-namespace:CookBook.App.Recipes.Converters"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300"
+             d:DataContext="{d:DesignInstance viewModels:RecipeListViewModel}"
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             >
+    <UserControl.Resources>
+        <converters:DurationToMinuteConverter x:Key="DurationToMinuteConverter" />
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0">TEST</Label>
+            <ListBox x:Name="RecipesListBox" Grid.Row="1" ItemsSource="{Binding Recipes}">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectionChanged">
+                    <interactivity:InvokeCommandAction Command="{Binding Mode=OneWay, Path=SelectRecipeCommand}" CommandParameter="{Binding ElementName=RecipesListBox, Path=SelectedItem}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Name}" />
+                        <TextBlock>
+                            Duration: 
+                            <Run 
+                                FontWeight="Bold" 
+                                Text="{
+                                Binding Duration, 
+                                Converter={StaticResource DurationToMinuteConverter}, 
+                                StringFormat= {}{0:F2}
+                                }" /> minut.
+                        </TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ListBox>
+    </Grid>
+</UserControl>

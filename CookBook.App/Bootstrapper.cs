@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using Castle.Windsor.Installer;
+using CookBook.App.Recipes;
 using CookBook.App.Views;
 using Prism.Logging;
 using Prism.Modularity;
@@ -26,6 +27,7 @@ namespace CookBook.App
             base.ConfigureModuleCatalog();
             var moduleCatalog = (ModuleCatalog)this.ModuleCatalog;
             // TODO moduleCatalog.AddModule(typeof(<moduleName>));
+            moduleCatalog.AddModule(typeof(RecipesModule));
         }
 
         protected override void ConfigureViewModelLocator()
@@ -47,5 +49,7 @@ namespace CookBook.App
             Application.Current.MainWindow = (Window)this.Shell;
             Application.Current.MainWindow.Show();
         }
+
+        public ILoggerFacade BoostrapperLogger => this.Logger;
     }
 }

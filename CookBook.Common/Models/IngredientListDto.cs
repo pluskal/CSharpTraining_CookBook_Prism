@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CookBook.BL.Models
+namespace CookBook.Common.Models
 {
     public class IngredientListDto
     {

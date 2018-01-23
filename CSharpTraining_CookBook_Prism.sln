@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrismContrib.WindsorExtensi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookBook.App.Infrastructure", "CookBook.App.Infrastructure\CookBook.App.Infrastructure.csproj", "{0E5AC709-A8C8-44CF-B78F-4D3577004523}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookBook.App.Recipes", "CookBook.App.Recipes\CookBook.App.Recipes.csproj", "{2C3D2C39-E497-45E0-9057-2863FB7B55B1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -71,6 +73,10 @@ Global
 		{0E5AC709-A8C8-44CF-B78F-4D3577004523}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E5AC709-A8C8-44CF-B78F-4D3577004523}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0E5AC709-A8C8-44CF-B78F-4D3577004523}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C3D2C39-E497-45E0-9057-2863FB7B55B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C3D2C39-E497-45E0-9057-2863FB7B55B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C3D2C39-E497-45E0-9057-2863FB7B55B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C3D2C39-E497-45E0-9057-2863FB7B55B1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

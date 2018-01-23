@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using CookBook.Common;
+using CookBook.Common.Enums;
 using CookBook.DAL.Entities;
 
 namespace CookBook.DAL
