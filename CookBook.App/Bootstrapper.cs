@@ -27,6 +27,7 @@ namespace CookBook.App
             base.ConfigureModuleCatalog();
             var moduleCatalog = (ModuleCatalog)this.ModuleCatalog;
             // TODO moduleCatalog.AddModule(typeof(<moduleName>));
+            moduleCatalog.AddModule(typeof(ShellModule));
             moduleCatalog.AddModule(typeof(RecipesModule));
         }
 
