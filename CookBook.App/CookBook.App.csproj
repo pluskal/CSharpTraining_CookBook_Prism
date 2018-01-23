@@ -183,5 +183,11 @@
       <Name>PrismContrib.WindsorExtensions.Desktop</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Dakirby309-Simply-Styled-Microsoft-Visual-Studio.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\prism-logo-graphic-128.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
