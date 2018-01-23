@@ -13,6 +13,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookBook.DAL.Tests", "CookBook.DAL.Tests\CookBook.DAL.Tests.csproj", "{2E3DF5C2-8A38-4A03-86D7-8D463C917E47}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookBook.BL", "CookBook.BL\CookBook.BL.csproj", "{CF85F3EB-2984-4AFE-BD5E-9E84E695B62C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookBook.BL.Tests", "CookBook.BL.Tests\CookBook.BL.Tests.csproj", "{7338B908-CE86-4E3C-8F74-9013FD0B78B7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{2E3DF5C2-8A38-4A03-86D7-8D463C917E47}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2E3DF5C2-8A38-4A03-86D7-8D463C917E47}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2E3DF5C2-8A38-4A03-86D7-8D463C917E47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF85F3EB-2984-4AFE-BD5E-9E84E695B62C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF85F3EB-2984-4AFE-BD5E-9E84E695B62C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF85F3EB-2984-4AFE-BD5E-9E84E695B62C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF85F3EB-2984-4AFE-BD5E-9E84E695B62C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7338B908-CE86-4E3C-8F74-9013FD0B78B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7338B908-CE86-4E3C-8F74-9013FD0B78B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7338B908-CE86-4E3C-8F74-9013FD0B78B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7338B908-CE86-4E3C-8F74-9013FD0B78B7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
