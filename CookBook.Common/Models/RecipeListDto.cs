@@ -1,7 +1,7 @@
 ﻿using System;
-using CookBook.Common;
+using CookBook.Common.Enums;
 
-namespace CookBook.BL.Models
+namespace CookBook.Common.Models
 {
     public class RecipeListDto
     {

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using CookBook.Common;
+using CookBook.Common.Enums;
 
 namespace CookBook.DAL.Entities
 {

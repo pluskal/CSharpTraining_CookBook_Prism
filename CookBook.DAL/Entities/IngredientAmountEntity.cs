@@ -1,4 +1,5 @@
 ﻿using CookBook.Common;
+using CookBook.Common.Enums;
 
 namespace CookBook.DAL.Entities
 {

@@ -40,9 +40,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FoodType.cs" />
+    <Compile Include="Enums\FoodType.cs" />
+    <Compile Include="Interfaces\ICookBookRepository.cs" />
+    <Compile Include="Models\IngredientDetailDTO.cs" />
+    <Compile Include="Models\IngredientListDto.cs" />
+    <Compile Include="Models\RecipeDetailDto.cs" />
+    <Compile Include="Models\RecipeListDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Unit.cs" />
+    <Compile Include="Enums\Unit.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

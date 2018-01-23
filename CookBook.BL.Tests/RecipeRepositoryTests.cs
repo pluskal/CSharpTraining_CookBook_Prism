@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
-using CookBook.BL.Models;
 using CookBook.Common;
+using CookBook.Common.Enums;
+using CookBook.Common.Models;
 using NUnit.Framework;
 
 namespace CookBook.BL.Tests
@@ -22,7 +23,7 @@ namespace CookBook.BL.Tests
         [OneTimeSetUp]
         public void OneTimeSetUp()
         {
-            this._cookBookRepository = new CookBookRepository(new Mapper(new CookBookMapperConfiguration()));
+            this._cookBookRepository = new CookBookRepository(new Mapper(new MapperConfiguration(cfg => cfg.AddProfile<CookBookMappingProfile>())));
         }
         [SetUp]
         public void SetUp()

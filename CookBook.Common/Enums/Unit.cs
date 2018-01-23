@@ -1,4 +1,4 @@
-﻿namespace CookBook.Common
+﻿namespace CookBook.Common.Enums
 {
     public enum Unit
     {

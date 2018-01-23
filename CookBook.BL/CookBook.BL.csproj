@@ -51,11 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CookBookMapperConfiguration.cs" />
-    <Compile Include="Models\IngredientListDto.cs" />
-    <Compile Include="Models\IngredientDetailDto.cs" />
-    <Compile Include="Models\RecipeDetailDto.cs" />
-    <Compile Include="Models\RecipeListDto.cs" />
+    <Compile Include="CookBookMappingProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CookBookRepository.cs" />
   </ItemGroup>
