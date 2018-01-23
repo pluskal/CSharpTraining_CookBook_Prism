@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 using AutoMapper;
 using AutoMapper.Configuration;
 using CookBook.Common.Interfaces;
@@ -21,19 +22,30 @@ namespace CookBook.BL
 
         public RecipeListDto[] GetAllRecipes()
         {
+            return Task.Run(async () => await this.GetAllRecipesAsync()).Result;
+        }
+
+        public async Task<RecipeListDto[]> GetAllRecipesAsync()
+        {
             using (var dbx = new CookBookDbContext())
             {
-                return dbx.Recipes.Select(this._mapper.Map<RecipeListDto>).ToArray();
+                var items = await dbx.Recipes.ToArrayAsync();
+                return items.Select(this._mapper.Map<RecipeListDto>).ToArray();
             }
         }
 
         public RecipeDetailDto GetRecipeById(Guid id)
         {
+            return Task.Run(async () => await this.GetRecipeByIdAsync(id)).Result;
+        }
+
+        public async Task<RecipeDetailDto> GetRecipeByIdAsync(Guid id)
+        {
             using (var dbx = new CookBookDbContext())
             {
-                return this._mapper.Map<RecipeDetailDto>(dbx.Recipes.Include(
+                return this._mapper.Map<RecipeDetailDto>(await dbx.Recipes.Include(
                     r => r.Ingredients.Select(i => i.Ingredient)
-                ).FirstOrDefault(r => r.Id == id));
+                ).FirstOrDefaultAsync(r => r.Id == id));
             }
         }
 
@@ -42,6 +54,10 @@ namespace CookBook.BL
         /// </summary>
         /// <param name="recipeDetail"></param>
         public void InsertOrUpdateRecipe(RecipeDetailDto recipeDetail)
+        {
+            Task.Run(async () => await this.InsertOrUpdateRecipeAsync(recipeDetail)).Wait();
+        }
+        public async Task InsertOrUpdateRecipeAsync(RecipeDetailDto recipeDetail)
         {
             var config = new MapperConfigurationExpression();
             using (var dbx = new CookBookDbContext())
@@ -108,7 +124,7 @@ namespace CookBook.BL
                 var mapper = new Mapper(new MapperConfiguration(config)) as IMapper;
                 mapper.Map<RecipeDetailDto, RecipeEntity>(recipeDetail);
 
-                dbx.SaveChanges();
+                await dbx.SaveChangesAsync();
                 }
             }
         
@@ -123,13 +139,22 @@ namespace CookBook.BL
 
         public IngredientListDto[] GetAllIngredients()
         {
+            return Task.Run(async () => await this.GetAllIngredientsAsync()).Result;
+        }
+        public async Task<IngredientListDto[]> GetAllIngredientsAsync()
+        {
             using (var dbx = new CookBookDbContext())
             {
-                return dbx.Ingredients.Select(this._mapper.Map<IngredientListDto>).ToArray();
+                var items = await dbx.Ingredients.ToArrayAsync();
+                return items.Select(this._mapper.Map<IngredientListDto>).ToArray();
             }
         }
 
         public void InsertOrUpdateIngredient(IngredientListDto ingredient)
+        {
+            Task.Run(async () => await this.InsertOrUpdateIngredientAsync(ingredient)).Wait();
+        }
+        public async Task InsertOrUpdateIngredientAsync(IngredientListDto ingredient)
         {
             var config = new MapperConfigurationExpression();
                 using (var dbx = new CookBookDbContext())
@@ -152,7 +177,7 @@ namespace CookBook.BL
                     var mapper = new Mapper(new MapperConfiguration(config)) as IMapper;
                     mapper.Map<IngredientListDto, IngredientEntity>(ingredient);
 
-                    dbx.SaveChanges();
+                    await dbx.SaveChangesAsync();
             }
         }
     }
