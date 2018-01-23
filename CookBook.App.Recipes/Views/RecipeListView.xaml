@@ -15,6 +15,7 @@
              xmlns:prism="http://prismlibrary.com/"
              xmlns:views="clr-namespace:CookBook.App.Infrastructure.Views;assembly=CookBook.App.Infrastructure"
              prism:ViewModelLocator.AutoWireViewModel="True"
+             xmlns:mvvmlight="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Platform"
              >
     <UserControl.Resources>
         <converters:DurationToMinuteConverter x:Key="DurationToMinuteConverter" />
@@ -26,30 +27,26 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <ListBox x:Name="RecipesListBox" Grid.Row="1" ItemsSource="{Binding Recipes}">
+            <ListView x:Name="RecipesListView" Grid.Row="1" ItemsSource="{Binding Recipes}">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="SelectionChanged">
-                        <interactivity:InvokeCommandAction Command="{Binding Mode=OneWay, Path=SelectRecipeCommand}" CommandParameter="{Binding ElementName=RecipesListBox, Path=SelectedItem}" />
+                        <!--PRISM interactivity:InvokeCommandAction fails with InvalidCastException on Remove operation.-->
+                        <!--<interactivity:InvokeCommandAction Command="{Binding Mode=OneWay, Path=SelectRecipeCommand}"
+                        CommandParameter="{Binding ElementName=RecipesListBox, Path=SelectedItem}"  />-->
+                        <mvvmlight:EventToCommand Command="{Binding Mode=OneWay, Path=SelectRecipeCommand}"
+                                                  CommandParameter="{Binding ElementName=RecipesListView, Path=SelectedItem }" />
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding Name}" />
-                            <TextBlock>
-                                Duration: 
-                                <Run 
-                                    FontWeight="Bold" 
-                                    Text="{
-                                Binding Duration, 
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" />
+                        <GridViewColumn Header="Duration" DisplayMemberBinding="{Binding Duration, 
                                 Converter={StaticResource DurationToMinuteConverter}, 
-                                StringFormat= {}{0:F2}
-                                }" /> minut.
-                            </TextBlock>
-                        </StackPanel>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ListBox>
+                                StringFormat= {}{0:F2}}" />
+                        <GridViewColumn Header="Type" DisplayMemberBinding="{Binding Type}" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
         </Grid>
         <views:LoadingView Visibility="{Binding IsLoading, Converter={StaticResource BoolToVisibilityConverter}}" />
     </Grid>

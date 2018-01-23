@@ -7,7 +7,28 @@
         xmlns:regions="http://prismlibrary.com/"
         xmlns:infrastructure="clr-namespace:CookBook.App.Infrastructure.Bases;assembly=CookBook.App.Infrastructure"
         mc:Ignorable="d"
-        Title="ShellWindow" Height="300" Width="300">
+        Title="ShellWindow" Height="600" Width="800">
+    <Window.Resources>
+        <Style x:Key="MainTabItem" TargetType="{x:Type TabItem}">
+            <Setter Property="Header" Value="{Binding Content.DataContext, RelativeSource={RelativeSource Self}}" />
+            <Setter Property="ToolTip" Value="{Binding DataContext.Description}" />
+            <Setter Property="IsSelected" Value="{Binding DataContext.IsSelected, Mode= TwoWay}"/>
+            <Setter Property="HeaderTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <TextBlock Grid.Column="1"
+                                   Margin="2"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   FontSize="14.667"
+                                   Foreground="Blue"
+                                   Padding="2"
+                                   Text="{Binding Title}" />
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -19,7 +40,7 @@
         </Border>
         <Border x:Name="BodyBoarder" Grid.Row="1" Margin="5" BorderBrush="Black" BorderThickness="1" CornerRadius="0,0,5,5">
             <TabControl x:Name="BodyContent" SelectedIndex="0"
-                        regions:RegionManager.RegionName="{x:Static infrastructure:RegionNames.BodyRegion}" />
+                        regions:RegionManager.RegionName="{x:Static infrastructure:RegionNames.BodyRegion}" ItemContainerStyle="{DynamicResource MainTabItem}" />
         </Border>
 
         <ContentControl x:Name="ModalContent" Grid.Row="0" Grid.RowSpan="2" Background="#00000000" d:IsHidden="True"

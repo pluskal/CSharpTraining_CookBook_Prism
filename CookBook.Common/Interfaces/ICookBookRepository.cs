@@ -23,5 +23,7 @@ namespace CookBook.Common.Interfaces
         Task<IngredientListDto[]> GetAllIngredientsAsync();
         void InsertOrUpdateIngredient(IngredientListDto ingredient);
         Task InsertOrUpdateIngredientAsync(IngredientListDto ingredient);
+        void RemoveRecipe(Guid id);
+        Task RemoveRecipeAsync(Guid id);
     }
 }

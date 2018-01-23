@@ -180,5 +180,19 @@ namespace CookBook.BL
                     await dbx.SaveChangesAsync();
             }
         }
+
+        public void RemoveRecipe(Guid id)
+        {
+            Task.Run(async () => await this.RemoveRecipeAsync(id)).Wait();
+        }
+        public async Task RemoveRecipeAsync(Guid id)
+        {
+            using (var dbx = new CookBookDbContext())
+            {
+                var item = await dbx.Recipes.FirstOrDefaultAsync(i=>i.Id==id);
+                dbx.Recipes.Remove(item);
+                await dbx.SaveChangesAsync();
+            }
+        }
     }
 }

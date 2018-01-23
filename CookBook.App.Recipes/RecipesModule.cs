@@ -15,6 +15,7 @@ namespace CookBook.App.Recipes
         public void Initialize()
         {
             this.RegionManager.RegisterViewWithRegion(RegionNames.BodyRegion, typeof(RecipeListView));
+            this.RegionManager.RegisterViewWithRegion(RegionNames.BodyRegion, typeof(RecipeDetailView));
             this.Logger.Log($"{nameof(RecipesModule)} was Initialized.", Category.Debug, Priority.None);
         }
     }

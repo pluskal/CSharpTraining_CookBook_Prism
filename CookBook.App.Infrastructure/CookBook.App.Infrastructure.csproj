@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Bases\ControllerBase.cs" />
     <Compile Include="Bases\RegionNames.cs" />
+    <Compile Include="Events\DeleteRecipeEvent.cs" />
     <Compile Include="Events\SelectedRecipeEvent.cs" />
     <Compile Include="Events\UpdateRecipeEvent.cs" />
     <Compile Include="Interfaces\IControllerBase.cs" />

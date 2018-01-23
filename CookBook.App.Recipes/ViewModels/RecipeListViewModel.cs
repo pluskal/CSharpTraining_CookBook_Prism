@@ -20,18 +20,27 @@ namespace CookBook.App.Recipes.ViewModels
         private ObservableCollection<RecipeListDto> _recipes;
         private bool _isLoading = true;
 
+        public string Title { get; } = "Recipes";
+
         public RecipeListViewModel(ICookBookRepository cookBookRepository, IEventAggregator eventAggregator)
         {
             this.CookBookRepository = cookBookRepository;
             this.EventAggregator = eventAggregator;
 
             this.EventAggregator.GetEvent<UpdateRecipeEvent>().Subscribe(this.UpdateRecipe);
+            this.EventAggregator.GetEvent<DeleteRecipeEvent>().Subscribe(this.RemoveRecipe);
             this.Recipes = new ObservableCollection<RecipeListDto>();
             this.OnLoad().ConfigureAwait(false); 
         }
-        
+
+        private void RemoveRecipe(RecipeDetailDto recipeDetailDto)
+        {
+            this.RemoveRecipeById(recipeDetailDto.Id);
+        }
+
         private void UpdateRecipe(RecipeDetailDto recipeDetailDto)
         {
+            this.RemoveRecipeById(recipeDetailDto.Id);
             this.Recipes.Add(new RecipeListDto()
             {
                 Id = recipeDetailDto.Id,
@@ -41,13 +50,18 @@ namespace CookBook.App.Recipes.ViewModels
             });
         }
 
+        private void RemoveRecipeById(Guid id)
+        {
+            var recipeListDto = this.Recipes.FirstOrDefault(i => i.Id == id);
+            this.Recipes.Remove(recipeListDto);
+        }
+
         private async Task OnLoad()
         {
             await Task.Run(async () =>
             {
                 this.IsLoading = true;
-                await Task.Delay(1000); //TODO Remove, Simulates DB delay
-                this.Recipes = new ObservableCollection<RecipeListDto>(this.CookBookRepository.GetAllRecipes());
+                this.Recipes = new ObservableCollection<RecipeListDto>(await this.CookBookRepository.GetAllRecipesAsync());
                 this.IsLoading = false;
             });
         }
@@ -61,17 +75,18 @@ namespace CookBook.App.Recipes.ViewModels
         private ICookBookRepository CookBookRepository { get; }
         private IEventAggregator EventAggregator { get; }
 
-        public ICommand SelectRecipeCommand => new DelegateCommand<RecipeListDto>(SelectRecipe);
+        public DelegateCommand<RecipeListDto> SelectRecipeCommand => new DelegateCommand<RecipeListDto>(SelectRecipe);
+        
 
         public bool IsLoading
         {
             get => this._isLoading;
             set => this.SetProperty(ref this._isLoading, value);
         }
-
+        
         private void SelectRecipe(RecipeListDto recipeListModel)
         {
-            this.EventAggregator.GetEvent<SelectedRecipeEvent>().Publish(recipeListModel);
+            this.EventAggregator.GetEvent<SelectedRecipeEvent>().Publish(recipeListModel as RecipeListDto);
         }
     }
 }
