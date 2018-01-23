@@ -13,10 +13,14 @@
              Name="RecipeDetail"
              d:DataContext="{d:DesignInstance viewModels:RecipeDetailViewModel}"
              >
+    <UserControl.InputBindings>
+        <KeyBinding Key="S" Modifiers="Control" Command="{Binding Path=SaveRecipeDetailCommand}" />
+    </UserControl.InputBindings>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Menu Grid.Row="0">
             <MenuItem Header="New" Command="{Binding NewRecipeDetailCommand}" />
